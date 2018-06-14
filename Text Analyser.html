@@ -1,0 +1,801 @@
+
+<!DOCTYPE html>
+<html class="scripts-not-loaded" dir="ltr"   lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <title>Text Analyser</title>
+  <!--[if lte IE 9]> <meta http-equiv=refresh content="0; URL=/ie-9-is-not-supported.html" /> <![endif]-->
+  <link rel="preload" href="https://du11hjcvx0uqb.cloudfront.net/dist/fonts/lato/latin/LatoLatin-Regular-3cd3657802.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="shortcut icon" type="image/x-icon" href="https://du11hjcvx0uqb.cloudfront.net/dist/images/favicon-e10d657a73.ico" />
+  <link rel="apple-touch-icon" href="https://instructure-uploads.s3.amazonaws.com/account_80170000000000001/attachments/382/logo_only2.png?AWSAccessKeyId=AKIAJFNFXH2V2O7RPCAA&amp;Expires=1932200966&amp;Signature=TmiOuZvO3wkDmFTO%2BCeWcD1Vldw%3D&amp;response-cache-control=Cache-Control%3Amax-age%3D473364000%2C%20public&amp;response-expires=473364000" />
+  
+  <link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/948c0fc17f278197475390801c3d0784/variables-750d72b9d3e5d522f965bf904110c132.css" />
+  <link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/common-ce1c22ece8.css" />
+  <script>
+//<![CDATA[
+
+!function(){
+  function get(u){document.write('<scr'+'ipt src="'+ u +'"></sc'+'ript>')}
+  var o,s,v;
+  if (!(window.Promise && Object.assign && Object.values && [].find && [].includes && (o={},s=Symbol(),v={},o[s]=v,o[s]===v) && (function f(){}).bind().name==='bound f')) {
+    get("https://du11hjcvx0uqb.cloudfront.net/dist/ie11-polyfill-eaf1bda494.js");
+  }
+  window.fetch || get("https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js");
+}();
+      
+//]]>
+</script>
+  <script src="https://du11hjcvx0uqb.cloudfront.net/dist/lato-fontfaceobserver-ed903d58c4.js" async="async"></script>
+  
+  <meta name="apple-itunes-app" content="app-id=480883488" />
+<link rel="manifest" href="/web-app-manifest/manifest.json" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#529fc8">
+  <link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/assignments-0e191b779e.css" />
+<link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/tinymce-cfde159ef1.css" />
+<link rel="stylesheet" media="all" href="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/learning_outcomes-f21c51d0f3.css" />
+  
+  
+  <script>
+    function _earlyClick(e){
+      var c = e.target
+      while (c && c.ownerDocument) {
+        if (c.getAttribute('href') == '#' || c.getAttribute('data-method')) {
+          e.preventDefault()
+          (_earlyClick.clicks = _earlyClick.clicks || []).push(c)
+          break
+        }
+        c = c.parentNode
+      }
+    }
+    document.addEventListener('click', _earlyClick)
+  </script>
+  <script src="https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/948c0fc17f278197475390801c3d0784/variables-750d72b9d3e5d522f965bf904110c132.js" defer="defer"></script>
+  <script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/vendor.bundle-b8593ea487.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/timezone/Europe/Budapest-ab28647899.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/timezone/en_GB-31745e04c9.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/moment/locale/en-gb.bundle-6de82ed71f.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/appBootstrap.bundle-226d82a7b0.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/common.bundle-015a1ae528.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/assignment_show.bundle-118e8a0b1a.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/submit_assignment.bundle-5950df4d20.js" defer="defer"></script>
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/edit_rubric.bundle-493f2d6641.js" defer="defer"></script>
+</head>
+
+<body class="with-left-side course-menu-expanded with-right-side assignments primary-nav-transitions context-course_73 lato-font-not-loaded-yet">
+
+<noscript>
+  <div role="alert" class="ic-flash-static ic-flash-error">
+    <div class="ic-flash__icon" aria-hidden="true">
+      <i class="icon-warning"></i>
+    </div>
+    <h1> To access this site, you must enable JavaScript.</h1>
+  </div>
+</noscript>
+
+
+
+
+
+<ul id="flash_message_holder"></ul>
+<div id="flash_screenreader_holder"></div>
+
+<div id="application" class="ic-app">
+  
+  <header id="header" class="ic-app-header no-print ">
+    <a href="#content" id="skip_navigation_link">Skip to content</a>
+      <div role="region" class="ic-app-header__main-navigation" aria-label="Global navigation">
+        <div class="ic-app-header__logomark-container">
+          <a href="https://codecool.instructure.com/" class="ic-app-header__logomark">
+            <span class="screenreader-only">Dashboard</span>
+          </a>
+        </div>
+        <ul id="menu" class="ic-app-header__menu-list">
+            <li class="menu-item ic-app-header__menu-list-item ">
+              <a id="global_nav_profile_link" href="/profile" class="ic-app-header__menu-list-link">
+                <div class="menu-item-icon-container" aria-hidden="true">
+                  <div class="ic-avatar ">
+                    <img src="https://codecool.instructure.com/images/thumbnails/27622/ljnSl6KwMq9kIRWByD6CCgGDD3vjlwAb8b3dWDCp" alt="Paweł Popowicz" />
+                  </div>
+                </div>
+                <div class="menu-item__text">
+                  Account
+                </div>
+              </a>
+            </li>
+          <li class="ic-app-header__menu-list-item ">
+            <a id="global_nav_dashboard_link" href="https://codecool.instructure.com/" class="ic-app-header__menu-list-link">
+              <div class="menu-item-icon-container" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--dashboard" version="1.1" x="0" y="0" viewBox="0 0 280 200" enable-background="new 0 0 280 200" xml:space="preserve"><path d="M273.09,180.75H197.47V164.47h62.62A122.16,122.16,0,1,0,17.85,142a124,124,0,0,0,2,22.51H90.18v16.29H6.89l-1.5-6.22A138.51,138.51,0,0,1,1.57,142C1.57,65.64,63.67,3.53,140,3.53S278.43,65.64,278.43,142a137.67,137.67,0,0,1-3.84,32.57ZM66.49,87.63,50.24,71.38,61.75,59.86,78,76.12Zm147,0L202,76.12l16.25-16.25,11.51,11.51ZM131.85,53.82v-23h16.29v23Zm15.63,142.3a31.71,31.71,0,0,1-28-16.81c-6.4-12.08-15.73-72.29-17.54-84.25a8.15,8.15,0,0,1,13.58-7.2c8.88,8.21,53.48,49.72,59.88,61.81a31.61,31.61,0,0,1-27.9,46.45ZM121.81,116.2c4.17,24.56,9.23,50.21,12,55.49A15.35,15.35,0,1,0,161,157.3C158.18,152,139.79,133.44,121.81,116.2Z" /></svg>
+
+              </div>
+              <div class="menu-item__text">Dashboard</div>
+            </a>
+          </li>
+          <li class="menu-item ic-app-header__menu-list-item ic-app-header__menu-list-item--active">
+            <a id="global_nav_courses_link" href="/courses" class="ic-app-header__menu-list-link">
+              <div class="menu-item-icon-container" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--courses" version="1.1" x="0" y="0" viewBox="0 0 280 259" enable-background="new 0 0 280 259" xml:space="preserve"><path d="M73.31,198c-11.93,0-22.22,8-24,18.73a26.67,26.67,0,0,0-.3,3.63v.3a22,22,0,0,0,5.44,14.65,22.47,22.47,0,0,0,17.22,8H200V228.19h-134V213.08H200V198Zm21-105.74h90.64V62H94.3ZM79.19,107.34V46.92H200v60.42Zm7.55,30.21V122.45H192.49v15.11ZM71.65,16.71A22.72,22.72,0,0,0,49,39.36V190.88a41.12,41.12,0,0,1,24.32-8h157V16.71ZM33.88,39.36A37.78,37.78,0,0,1,71.65,1.6H245.36V198H215.15v45.32h22.66V258.4H71.65a37.85,37.85,0,0,1-37.76-37.76Z"/></svg>
+
+              </div>
+              <div class="menu-item__text">
+                Courses
+              </div>
+            </a>
+          </li>
+            <li class="menu-item ic-app-header__menu-list-item ">
+              <a id="global_nav_groups_link" href="/groups" class="ic-app-header__menu-list-link">
+                <div class="menu-item-icon-container" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--groups" viewBox="0 0 200 135"><path d="M134.5 129.4c0-1.1 0-19.8-6.2-31.1-4.5-8.5-16.4-12.4-35-19.2-1.7-.6-3.4-1.1-5.1-1.7v-8.5c5.6-5.1 8.5-12.4 8.5-20.3V29.4C96.6 13 83.6 0 67.2 0S37.9 13 37.9 29.4v19.2c0 7.3 3.4 14.7 8.5 20.3v8.5c-1.7.6-3.4 1.1-5.1 1.7-18.6 6.2-30.5 10.7-35 19.2C0 109.6 0 128.8 0 129.4c0 3.4 2.3 5.6 5.6 5.6h123.7c3.5 0 5.7-2.3 5.2-5.6zm-123.2-5.7c.6-5.6 1.7-14.7 3.4-19.8C17 98.8 30 94.3 43.5 89.8c2.8-1.1 5.6-2.3 9-3.4 2.3-.6 4-2.8 4-5.1V66.7c0-1.7-.6-3.4-1.7-4.5-4-3.4-6.2-8.5-6.2-13.6V29.4c0-10.2 7.9-18.1 18.1-18.1s18.1 7.9 18.1 18.1v19.2c0 5.1-2.3 10.2-6.2 13.6-1.1 1.1-1.7 2.8-1.7 4.5v14.7c0 2.3 1.7 4.5 4 5.1 2.8 1.1 6.2 2.3 9 3.4 13.6 5.1 26.6 9.6 28.8 14.1 2.8 5.1 4 13.6 4.5 19.8H11.3zM196 79.1c-2.8-6.2-11.3-9.6-22.6-13.6l-1.7-.6v-3.4c4.5-4 6.8-9.6 6.8-15.8V35c0-12.4-9.6-22-22-22s-22 10.2-22 22v10.7c0 6.2 2.3 11.9 6.8 15.8V65l-1.7.6c-7.3 2.8-13 4.5-16.9 7.3-1.7 1.1-2.3 2.8-2.3 5.1.6 1.7 1.7 3.4 3.4 4.5 7.9 4 12.4 7.3 14.1 10.7 2.3 4.5 4 10.2 5.1 18.1.6 2.3 2.8 4.5 5.6 4.5h45.8c3.4 0 5.6-2.8 5.6-5.1 0-3.9 0-24.3-4-31.6zm-42.9 25.4c-1.1-6.8-2.8-12.4-5.1-16.9-1.7-4-5.1-6.8-9.6-10.2 1.7-1.1 3.4-1.7 5.1-2.3l5.6-2.3c1.7-.6 3.4-2.8 3.4-5.1v-9.6c0-1.7-.6-3.4-2.3-4.5-2.8-1.7-4.5-5.1-4.5-8.5V34.5c0-6.2 4.5-10.7 10.7-10.7s10.7 5.1 10.7 10.7v10.7c0 3.4-1.7 6.2-4.5 8.5-1.1 1.1-2.3 2.8-2.3 4.5v10.2c0 2.3 1.1 4.5 3.4 5.1l5.6 2.3c6.8 2.3 15.3 5.6 16.4 7.9 1.7 2.8 2.8 12.4 2.8 20.9h-35.4z"/></svg>
+
+                </div>
+                <div class="menu-item__text">
+                  Groups
+                </div>
+              </a>
+            </li>
+          <li class="menu-item ic-app-header__menu-list-item ">
+            <a id="global_nav_calendar_link" href="/calendar" class="ic-app-header__menu-list-link">
+              <div class="menu-item-icon-container" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--calendar" version="1.1" x="0" y="0" viewBox="0 0 280 280" enable-background="new 0 0 280 280" xml:space="preserve"><path d="M197.07,213.38h16.31V197.07H197.07Zm-16.31,16.31V180.76h48.92v48.92Zm-48.92-16.31h16.31V197.07H131.85Zm-16.31,16.31V180.76h48.92v48.92ZM66.62,213.38H82.93V197.07H66.62ZM50.32,229.68V180.76H99.24v48.92Zm146.75-81.53h16.31V131.85H197.07Zm-16.31,16.31V115.54h48.92v48.92Zm-48.92-16.31h16.31V131.85H131.85Zm-16.31,16.31V115.54h48.92v48.92ZM66.62,148.15H82.93V131.85H66.62ZM50.32,164.46V115.54H99.24v48.92ZM34,262.29H246V82.93H34ZM246,66.62V42.16A8.17,8.17,0,0,0,237.84,34H213.38v8.15a8.15,8.15,0,1,1-16.31,0V34H82.93v8.15a8.15,8.15,0,0,1-16.31,0V34H42.16A8.17,8.17,0,0,0,34,42.16V66.62Zm-8.15-48.92a24.49,24.49,0,0,1,24.46,24.46V278.6H17.71V42.16A24.49,24.49,0,0,1,42.16,17.71H66.62V9.55a8.15,8.15,0,0,1,16.31,0v8.15H197.07V9.55a8.15,8.15,0,1,1,16.31,0v8.15Z"/></svg>
+
+              </div>
+              <div class="menu-item__text">
+                Calendar
+              </div>
+            </a>
+          </li>
+          <li class="menu-item ic-app-header__menu-list-item ">
+            <a id="global_nav_conversations_link" href="/conversations" class="ic-app-header__menu-list-link">
+              <div class="menu-item-icon-container" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--inbox" version="1.1" x="0" y="0" viewBox="0 0 280 280" enable-background="new 0 0 280 280" xml:space="preserve"><path d="M91.72,120.75h96.56V104.65H91.72Zm0,48.28h80.47V152.94H91.72Zm0-96.56h80.47V56.37H91.72Zm160.94,34.88H228.52V10.78h-177v96.56H27.34A24.17,24.17,0,0,0,3.2,131.48V244.14a24.17,24.17,0,0,0,24.14,24.14H252.66a24.17,24.17,0,0,0,24.14-24.14V131.48A24.17,24.17,0,0,0,252.66,107.34Zm0,16.09a8.06,8.06,0,0,1,8,8v51.77l-32.19,19.31V123.44ZM67.58,203.91v-177H212.42v177ZM27.34,123.44H51.48v79.13L19.29,183.26V131.48A8.06,8.06,0,0,1,27.34,123.44ZM252.66,252.19H27.34a8.06,8.06,0,0,1-8-8V202l30,18H230.75l30-18v42.12A8.06,8.06,0,0,1,252.66,252.19Z"/></svg>
+
+                <span class="menu-item__badge" style="display: none">0</span>
+              </div>
+              <div class="menu-item__text">
+                Inbox
+              </div>
+            </a>
+          </li>
+            
+
+
+          <li class="ic-app-header__menu-list-item">
+           <a id="global_nav_help_link" class="ic-app-header__menu-list-link" data-track-category="help system" data-track-label="help button" href="http://help.instructure.com/">
+              <div class="menu-item-icon-container" role="presentation">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg menu-item__icon svg-icon-help" version="1.1" x="0" y="0" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve" fill="currentColor"><path d="M100,127.88A11.15,11.15,0,1,0,111.16,139,11.16,11.16,0,0,0,100,127.88Zm8.82-88.08a33.19,33.19,0,0,1,23.5,23.5,33.54,33.54,0,0,1-24,41.23,3.4,3.4,0,0,0-2.74,3.15v9.06H94.42v-9.06a14.57,14.57,0,0,1,11.13-14,22.43,22.43,0,0,0,13.66-10.27,22.73,22.73,0,0,0,2.31-17.37A21.92,21.92,0,0,0,106,50.59a22.67,22.67,0,0,0-19.68,3.88,22.18,22.18,0,0,0-8.65,17.64H66.54a33.25,33.25,0,0,1,13-26.47A33.72,33.72,0,0,1,108.82,39.8ZM100,5.2A94.8,94.8,0,1,0,194.8,100,94.91,94.91,0,0,0,100,5.2m0,178.45A83.65,83.65,0,1,1,183.65,100,83.73,83.73,0,0,1,100,183.65" transform="translate(-5.2 -5.2)"/></svg>
+
+              </div>
+              <div class="menu-item__text">
+                Help
+              </div>
+</a>          </li>
+        </ul>
+      </div>
+      <div class="ic-app-header__secondary-navigation">
+        <ul class="ic-app-header__menu-list">
+          <li class="menu-item ic-app-header__menu-list-item">
+            <button
+              id="primaryNavToggle"
+              class="ic-app-header__menu-list-link ic-app-header__menu-list-link--nav-toggle"
+              aria-label="Expand global navigation
+                "
+              title="Expand global navigation
+                "
+            >
+              <div class="menu-item-icon-container" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg ic-icon-svg--navtoggle" version="1.1" x="0" y="0" width="40" height="32" viewBox="0 0 40 32" xml:space="preserve">
+  <path d="M39.5,30.28V2.48H37.18v27.8Zm-4.93-13.9L22.17,4,20.53,5.61l9.61,9.61H.5v2.31H30.14l-9.61,9.61,1.64,1.64Z"/>
+</svg>
+
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
+    <div id="global_nav_tray_container"></div>
+  </header>
+
+
+  <div id="instructure_ajax_error_box">
+    <div style="text-align: right; background-color: #fff;"><a href="#" class="close_instructure_ajax_error_box_link">Close</a></div>
+    <iframe id="instructure_ajax_error_result" src="about:blank" style="border: 0;" title="Error"></iframe>
+  </div>
+
+  
+
+  <div id="wrapper" class="ic-Layout-wrapper">
+      <div class="ic-app-nav-toggle-and-crumbs no-print">
+          <button type="button" id="courseMenuToggle" class="Button Button--link ic-app-course-nav-toggle" aria-live="polite" aria-label="Hide courses navigation menu" title="Hide courses navigation menu">
+            <i class="icon-hamburger" aria-hidden="true"></i>
+          </button>
+          <div class="ic-app-crumbs">
+        <nav id="breadcrumbs" role="navigation" aria-label="breadcrumbs"><ul><li class="home"><a href="/"><span class="ellipsible">      <i class="icon-home"
+         title="Mój panel">
+        <span class="screenreader-only">Mój panel</span>
+      </i>
+</span></a></li><li><a href="/courses/73"><span class="ellipsible">KRK.2017.3</span></a></li><li><a href="/courses/73/assignments"><span class="ellipsible">Assignments</span></a></li><li><a href="https://codecool.instructure.com/courses/73/assignments/3283"><span class="ellipsible">Text Analyser</span></a></li></ul></nav>
+        </div>
+      </div>
+    <div id="main" class="ic-Layout-columns">
+        <div class="ic-Layout-watermark"></div>
+        <div id="left-side"
+          class="ic-app-course-menu list-view"
+          style="display: block"
+          >
+            <nav role="navigation" aria-label="Courses navigation menu"><ul id="section-tabs"><li class="section"><a href="/courses/73" title="Home" class="home">Home</a></li><li class="section"><a href="/courses/73/assignments" title="Assignments" class="assignments active">Assignments</a></li><li class="section"><a href="/courses/73/discussion_topics" title="Discussions" class="discussions">Discussions</a></li><li class="section"><a href="/courses/73/grades" title="Grades" class="grades">Grades</a></li><li class="section"><a href="/courses/73/users" title="People" class="people">People</a></li><li class="section"><a href="/courses/73/wiki" title="Pages" class="pages">Pages</a></li><li class="section"><a href="/courses/73/files" title="Files" class="files">Files</a></li><li class="section"><a href="/courses/73/assignments/syllabus" title="Syllabus" class="syllabus">Syllabus</a></li><li class="section"><a href="/courses/73/outcomes" title="Outcomes" class="outcomes">Outcomes</a></li><li class="section"><a href="/courses/73/quizzes" title="Quizzes" class="quizzes">Quizzes</a></li><li class="section"><a href="/courses/73/modules" title="Modules" class="modules">Modules</a></li><li class="section"><a href="/courses/73/conferences" title="Conferences" class="conferences">Conferences</a></li><li class="section"><a href="/courses/73/collaborations" title="Collaborations" class="collaborations">Collaborations</a></li></ul></nav>
+        </div>
+      <div id="not_right_side" class="ic-app-main-content">
+        <div id="content-wrapper" class="ic-Layout-contentWrapper">
+            
+
+          <div id="content" class="ic-Layout-contentMain" role="main">
+            
+
+
+
+<div id="assignment_show" class="assignment content_underline_links">
+    <!--Student View-->
+    <div class='assignment-title'>
+      <div class='title-content'>
+        <h1 class="title">
+          Text Analyser
+        </h1>
+      </div>
+      <div class='assignment-buttons'>
+        
+
+        <a role="button" class="Button Button--primary submit_assignment_link " href="#">Submit Assignment</a>
+      </div>
+    </div>
+    <ul class='student-assignment-overview'>
+      <li>
+        <span class='title'>Due</span>
+        <span class='value'>
+          <span class="date_text">
+              No due date
+          </span>
+        </span>
+      </li>
+      <li>
+        <span class='title'>Points</span>
+        <span class='value'>0</span>
+      </li>
+        <li>
+          <span class='title'>Submitting</span>
+          <span class='value'>a website url</span>
+        </li>
+      
+
+      <div class="clear"></div>
+    </ul>
+
+  <div class="clear"></div>
+
+
+  <div class="clear"></div>
+
+  <div class="description user_content student-version"><p><span style="font-weight: 400;">Your goal is to implement a tool for lexical analysis of text data.</span></p>
+<p><span style="font-weight: 400;">Here’s an example of the programs usage and output with descriptions:</span></p>
+<p><span style="font-weight: 400;">&gt;<span> </span></span><i><span style="font-weight: 400;">java Application text1.txt text2.txt</span></i></p>
+<pre><span style="font-weight: 400;">==text1.txt== </span><strong><span style="background-color: #99cc00;">name of the analyzed file</span><br></strong><span style="font-weight: 400;">Char count: 761674 </span><span style="background-color: #99cc00;"><strong>number of characters in the file (without white-spaces)</strong></span><br><span style="font-weight: 400;">Word count: 188912 </span><span style="background-color: #99cc00;"><strong>number of words in the file</strong></span><br><span style="font-weight: 400;">Dict size: 10762</span><span style="background-color: #99cc00;"><strong> dictionary size: number of different words used</strong></span><br><span style="font-weight: 400;">Most used words (&gt;1%): [a,and,had..&lt;more&gt;] </span><span style="background-color: #99cc00;"><strong>all words that make up for more than 1% of the text</strong></span><br><span style="font-weight: 400;">'love' count: 60 </span><span style="background-color: #99cc00;"><strong>number of times that the word ‘love’ occurred</strong></span><br><span style="font-weight: 400;">'hate' count: 4 </span><span style="background-color: #99cc00;"><strong>number of times that the word ‘hate’ occurred</strong></span><br><span style="font-weight: 400;">'music' count: 4 </span><span style="background-color: #99cc00;"><strong>number of times that the word ‘music’ occurred</strong></span><br><span style="font-weight: 400;">vowels %: 38 </span><span style="background-color: #99cc00;"><strong>what part of all characters are vowels (a,o,i,e,u)</strong></span><br><span style="font-weight: 400;">'a:e count ratio' : 1.54 </span><span style="background-color: #99cc00;"><strong>the ratio of ‘a’ to ‘e’ occurrences</strong></span><br><span style="font-weight: 400;">[ G -&gt; 2.16] [ R -&gt; 5.36] ....&lt;and the rest&gt; </span><span style="background-color: #99cc00;"><strong>% of in whole text of all the letters</strong></span><br><span style="font-weight: 400;">==text2.txt== </span><span style="background-color: #99cc00;"><strong>another file… everything like above</strong></span><br><span style="font-weight: 400;">Char count: 955387<br>Word count: 219044<br>Dict size: 16957<br>Most used words (&gt;1%): [a,and,his,in,it,of,that,the,to]<br>'love' count: 24<br>'hate' count: 9<br>'music' count: 4<br>vowels %: 37<br>'a:e count ratio' : 1.49<br>[ M -&gt; 2.44] [ O -&gt; 7.27] [ B -&gt; 1.77] …. &lt;and the rest&gt;<br><span style="text-decoration: underline;">Benchmark time: 1.419 secs </span></span><span style="text-decoration: underline; background-color: #99cc00;"><strong>Time it took the program to run</strong></span></pre>
+<p><strong>You can find test files in your <a href="https://classroom.github.com/a/V2UVnpb3">classroom repository</a></strong></p>
+<p><span style="font-weight: 400;">Take a look at the UML diagram.</span></p>
+<p><span style="font-weight: 400;">NOTES:</span></p>
+<ol>
+<ol>
+<li style="font-weight: 400;">
+<span style="font-weight: 400;">Private methods are not shown on the diagram.<span> </span></span><span style="font-weight: 400;">You are free to implement any necessary/helpful private methods in any class.</span>
+</li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Use the Iterator interface from java.util. You don’t have to create your own.</span></li>
+<li style="font-weight: 400;"><strong>The input files will only consist of alphabetic characters and white spaces.</strong></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">The input file will consist both upper and lower case characters. You should use only one case to ensure that the results of the analysis will be consistent.</span></li>
+</ol>
+</ol>
+<p> </p>
+<p> <img src="/files/22301/download?download_frd=1&amp;verifier=gG4s4Xbx4BV0zbGT5KJyxQdD5nGDSUnyGgEVF3oI" alt="cp3.png" data-api-endpoint="https://codecool.instructure.com/api/v1/files/22301" data-api-returntype="File"></p>
+<p> </p>
+<p><span style="font-weight: 400;">Classes to implement:</span></p>
+<ol>
+<li style="font-weight: 400;">
+<strong>IterableText<span> </span></strong><span style="font-weight: 400;">interface. Create the interface with required methods.</span>
+</li>
+<li style="font-weight: 400;">
+<strong>FileContent -</strong><span style="font-weight: 400;"><span> </span>class responsible for reading text files and providing its content through implementing<span> </span></span><strong>IterableText<span> </span></strong><span style="font-weight: 400;">interface. The content will be provided through methods<span> </span></span><strong>charIterator()<span> </span></strong><span style="font-weight: 400;">and<span> </span></span><strong>wordIterator().</strong>
+</li>
+<li style="font-weight: 400;">
+<strong>CharIterator<span> </span></strong><span style="font-weight: 400;">successively iterates over alphabetic characters (single letters) of the text. It skips all other characters (like white-spaces). Implements next() and hasNext() from<span> </span></span><strong>Iterator<span> </span></strong><span style="font-weight: 400;">interface. NOTE: Chars are represented as Strings for the sake of simplicity. Remember that characters’ case (UPPER or lower) should be consistent in our analysis.</span>
+</li>
+<li style="font-weight: 400;">
+<strong>WordIterator</strong><strong>   <span> </span></strong><span style="font-weight: 400;">successively iterates over words of the text. Words in the text are separated with white-spaces. Implements next() and hasNext() from<span> </span></span><strong>Iterator<span> </span></strong><span style="font-weight: 400;">interface.</span>
+</li>
+<li style="font-weight: 400;">
+<strong>StatisticalAnalysis<span> </span></strong><span style="font-weight: 400;">is the dataset. It is initialized with Iterator&lt;String&gt; and provides functions for statistical analysis of the text elements (Strings). NOTE: You may choose any data structure to store the processed data. The choice will affect the amount of code you will have to write.</span>
+</li>
+<ol>
+<li style="font-weight: 400;">
+<span style="font-weight: 400;">countOf(String… elems) function returns sum of all occurrences (in the dataset) of the elements given as arguments (</span><i><span style="font-weight: 400;">elems)</span></i><span style="font-weight: 400;">. Note: One string may be given as well. The three-dots operator will help you pass variable number of arguments to the function and access them with ease.</span><span style="font-weight: 400;"><br></span><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html#varargs"><span style="font-weight: 400;">https://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html#varargs</span></a>
+</li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">dictionarySize() function returns the number of unique elements of the dataset. It’s the size so-called Author’s Dictionary - the set of different words the author of the text uses.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">size() returns the total number of all elements in the dataset. This will be total number of words or total number of characters.</span></li>
+<li style="font-weight: 400;">
+<span style="font-weight: 400;">occurMoreThan(Integer<span> </span></span><i><span style="font-weight: 400;">n</span></i><span style="font-weight: 400;">) returns all the elements that occur more than<span> </span></span><i><span style="font-weight: 400;">n<span> </span></span></i><i><span style="font-weight: 400;">times<span> </span></span></i><span style="font-weight: 400;">in the dataset</span>
+</li>
+</ol>
+<li style="font-weight: 400;">
+<strong>View<span> </span></strong><span style="font-weight: 400;">this class should be responsible for presenting the data to the user.<span> </span><span style="text-decoration: underline;">You are free to implement any functions you find sensible. NOTE: In case of this class you don’t have to follow the UML diagram.</span></span>
+</li>
+<li style="font-weight: 400;">
+<strong>Application<span> </span></strong><span style="font-weight: 400;">main class of the program. It should allow the user to pass to text files for analysis as CLI arguments. Also,<span> </span></span><strong>measure<span> </span></strong><span style="font-weight: 400;">the time of the program's execution. For example:<span> </span></span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">&gt;<span> </span></span><i><span style="font-weight: 400;">java Application text1.txt text2.txt</span></i>
+</li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Handle only those exceptions which are required to be handled by the functions and methods you use. Custom error messages are not required (printStackTrace() can be used).</span></li>
+<li style="font-weight: 400;">
+<span style="font-weight: 400;">The structure of packages tree is not restricted by anything but clean code principles.</span><span style="font-weight: 400;"></span>
+</li>
+</ol>
+<h3><span style="font-weight: 400;"><a class="" title="Link" href="https://classroom.github.com/a/zHn2Oci0" data-preview-alt=""></a></span></h3></div>
+
+
+  <div style="display: none;">
+    <span class="timestamp">0</span>
+    <span class="due_date_string"></span>
+    <span class="due_time_string"></span>
+  </div>
+</div>
+
+
+  
+<div style="display: none;" id="submit_assignment" data-context_code="course_73" data-asset_string="assignment_3283">
+  <div class="content" id="submit_assignment_tabs">
+    <ul>
+        <li><a href="#submit_online_url_form" class="submit_online_url_option">Website URL</a></li>
+        <li><a href="#submit_from_external_tool_form_42"
+          class="external-tool"
+          data-id="42"
+          data-name="Code Embed">Code Embed</a></li>
+    </ul>
+
+
+    <form id="submit_online_url_form" class="submit_assignment_form" action="/courses/73/assignments/3283/submissions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="WcmFCCITl2Oq3tqtQ/FYeLlK+nMzwfFfHCuSH3tCtIA9qq5mF3nSCe+XvZ0hpRdOyj64IQSjmzVkAL1aHDH5ww==" />
+    <input value="online_url" type="hidden" name="submission[submission_type]" id="submission_submission_type" />
+    <table class="formtable" style="width: 100%;">
+      <tr>
+        <td colspan="2">
+          Copy and paste the link to the web site you&#39;d like to submit for this assignment.
+            
+          </td>
+      </tr><tr>
+        <td colspan="2">
+          <label for="submission_url">Website URL:</label>
+          &nbsp;&nbsp;
+          <input style="min-width: 250px;" type="text" name="submission[url]" id="submission_url" />
+        </td>
+      </tr><tr>
+        <td colspan="2" style="text-align: center;">
+          <div style="text-align: left;">
+            <textarea class="submission_comment_textarea" placeholder="Comments..." title="Additional comments" name="submission[comment]" id="submission_comment">
+</textarea>
+          </div>
+        </td>
+      </tr>
+      
+
+      <tr>
+        <td colspan="2" class='button-container'>
+          <button type="button" class='cancel_button btn'>Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit assignment</button>
+        </td>
+      </tr>
+    </table>
+</form>
+    <style>
+    #google_docs_tree li.folder {
+      cursor: pointer;
+    }
+    #google_docs_tree li.file {
+      cursor: pointer;
+      -moz-border-radius: 3px;
+      width: 80%;
+      padding-right: 20px;
+    }
+    #google_docs_tree li.file:hover {
+      background-color: #eee;
+    }
+    ul.instTree li span.active {
+      background: none;
+    }
+    #google_docs_tree li.file.leaf.active {
+      background-color: #ddd;
+    }
+    #google_docs_tree li.file .filename {
+      float: left;
+      max-width: 98%;
+    }
+    #google_docs_tree li.file .popout {
+      float: right;
+    }
+    </style>
+
+
+      <div id="submit_from_external_tool_form_42" style="padding: 5px 5px 0 5px;"></div>
+
+  </div>
+</div>
+
+
+
+
+
+  <div id="rubrics" style="margin-bottom: 10px;">
+    <div style="display: none;" id="rubric_parameters">
+      <input type="hidden" name="rubric_association[association_type]" value="Assignment"/>
+      <input type="hidden" name="rubric_association[association_id]" value="3283"/>
+      <input type="hidden" name="rubric_association[purpose]" value="grading"/>
+    </div>
+    
+<div id="rubric_long_description_dialog" style="display: none;">
+  <div class="editing">
+    <form id="edit_criterion_form" class="no-margin-bottom">
+      <div>
+        <label class="rating_form_label">Description
+          <textarea class="description" rows="1" name="description"></textarea>
+        </label>
+      </div>
+      <div>
+        <label class="rating_form_label">Long description
+          <textarea class="long_description" rows="4" name="long_description"></textarea>
+        </label>
+      </div>
+      <div class="button-container">
+        <button type="button" class="btn btn button-secondary cancel_button">Cancel</button>
+        <button type="button" class="btn save_button btn-primary">Update criterion</button>
+      </div>
+    </form>
+  </div>
+  <div class="displaying">
+    <div class="long_description">
+    </div>
+  </div>
+</div>
+<div id="rubric_criterion_comments_dialog" style="display: none;">
+  <div
+    class="criterion_description"
+    style="border-bottom: 1px solid #ccc; padding: 5px 0; font-size: 1.2em; font-weight: bold; margin-bottom: 5px;"
+    tabindex="-1"
+  ></div>
+  <div class="editing">
+    <label for="criterion_comments_textarea">
+      Additional comments:
+    </label>
+    <textarea
+      id="criterion_comments_textarea"
+      class="criterion_comments"
+      name="criterion_comments"
+      style="width: 370px;"></textarea>
+    <div class="button-container">
+      <button type="button" class="btn btn button-secondary cancel_button">Cancel</button>
+      <button type="button" class="btn save_button">Update comments</button>
+    </div>
+  </div>
+  <div class="displaying">
+    Additional comments:
+    <div class="criterion_comments" style="margin-top: 10px;">
+    </div>
+  </div>
+</div>
+<div id="rubric_rating_dialog" style="display: none;">
+  <div class="description" style="border-bottom: 1px solid #ccc; padding: 5px 0; font-size: 1.2em; font-weight: bold; margin-bottom: 5px;">
+    <span id="edit_rating_form_criterion_description"></span>
+  </div>
+  <div class="editing">
+    <form id="edit_rating_form" class="no-margin-bottom">
+      <div>
+        <div><label id='rating_form_score_label' class="rating_form_label">Rating Score</label></div>
+        <span id='rating_form_max_score_label' hidden>Rating max score</span>
+        <input id="points" aria-labelledby="rating_form_score_label" type="text" size="2" name="points" class="no-margin-bottom span1" />
+        <span class="range_rating">to >
+          <input aria-label="Rating min score" type="text" size="2" name="min_points" class="no-margin-bottom span1 min_points" placeholder="min"/>
+        </span>Pts
+      </div>
+      <div>
+        <label for="rating_form_title" class="rating_form_label">Rating Title</label>
+        <input id="rating_form_title" type="text" class="rating_description" style="width: 90%;" name="description"/>
+      </div>
+      <div>
+        <label for="rating_form_description" class="rating_form_label">Rating Description</label>
+        <textarea id="rating_form_description" rows="4" style="width: 90%;" class="rating_long_description" name="rating_long_description" form="edit_rating_form"></textarea>
+      </div>
+      <div class="button-container">
+        <button type="button" class="btn button-secondary cancel_button">Cancel</button>
+        <button type="button" class="btn btn-primary save_button ok_button">Update Rating</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  </div>
+  
+<div
+  class="rubric_container rubric  "
+  id="default_rubric"
+  style="display: none;"
+  tabindex="0"
+>
+  <div class="screenreader-only"><h2>Rubric</h2></div>
+  <div class="rubric_title">
+    <div style="display: none;" class="links displaying pull-right">
+      <a
+        href="/courses/73/rubrics/%7B%7B%20id%20%7D%7D"
+        class=" edit_rubric_link no-print no-hover"
+        style=""
+        title="Edit rubric"
+        aria-label="Edit rubric"
+        role="button"
+      ><i class="icon-edit standalone-icon"></i></a>
+      <a
+        href="https://codecool.instructure.com/search/rubrics?q="
+        class="find_rubric_link no-print no-hover"
+        style=""
+        title="Find another rubric"
+        aria-label="Find another rubric"
+        role="button"
+      ><i class="icon-search standalone-icon"></i></a>
+        <a
+          href="/courses/73/rubric_associations/%7B%7B%20rubric_association_id%20%7D%7D"
+          class="delete_rubric_link no-print no-hover"
+          style=""
+          title="Delete rubric"
+          aria-label="Delete rubric"
+          role="button"
+        ><i class="icon-trash standalone-icon"></i></a>
+      <div style="display: none;">
+        <div class="use_for_grading">&nbsp;</div>
+        <div class="free_form_criterion_comments">&nbsp;</div>
+        <div class="hide_score_total">&nbsp;</div>
+        <div class="rubric_association_id">&nbsp;</div>
+        <div class="user_id">&nbsp;</div>
+        <div class="assessment_type"></div>
+        <a href="/courses/73/rubric_associations/%7B%7B%20rubric_association_id%20%7D%7D/assessments/%7B%7B%20assessment_id%20%7D%7D" rel="nofollow" class="edit_assessment_link">&nbsp;</a>
+        <a href="/courses/73/rubrics/%7B%7B%20rubric_id%20%7D%7D" class="edit_rubric_url">&nbsp;</a>
+          <a href="/courses/73/rubric_associations/%7B%7B%20association_id%20%7D%7D" class="delete_rubric_url">&nbsp;</a>
+      </div>
+    </div>
+    <div style="float: right; font-size: 0.8em; display: none;" class="links displaying locked">
+      <span style="">Can&#39;t change a rubric once you&#39;ve started using it.</span>
+        <a href="/courses/73/rubric_associations/%7B%7B%20association_id%20%7D%7D" class="delete_rubric_url" style="display: none;">&nbsp;</a>
+    </div>
+
+    <div class="editing" style="float: right;">
+      <a href="https://codecool.instructure.com/search/rubrics?q=" class="find_rubric_link icon-search" style="" title="Find existing rubric">Find a rubric</a>
+    </div>
+    <div class="editing" style="text-align: left">
+      <label for="rubric-title">Title:</label>
+      <input id="rubric-title" type="text" class="no-margin-bottom" name="title" value="Some rubric" style="width: 200px;" maxlength="255" aria-label="Title:"/>
+      <a href="https://codecool.instructure.com/search/rubrics?q=" style="display: none;"><img alt="" src="https://du11hjcvx0uqb.cloudfront.net/dist/images/find-6164443e2a.png" /> Find rubric</a>
+    </div>
+    <div class="displaying">
+      <span class="title" tabindex="-1">Title</span>
+    </div>
+    <div class="has-assessments-warning" style="display: none;">
+      You&#39;ve already rated students with this rubric. Any major changes could affect their assessment results.
+    </div>
+  </div>
+<table class="rubric_table">
+<caption>
+  <div class="screenreader-only">
+    <span class="title">Title</span>
+  </div>
+</caption>
+<thead>
+  <tr>
+    <th scope="col">Criteria</th>
+    <th scope="col">Ratings</th>
+    <th scope="col">Pts</th>
+  </tr>
+</thead>
+<tbody>
+  
+<tr id="criterion_blank" class="criterion blank  " style="display: none;">
+  <td class="criterion_description hover-container pad-box-micro">
+    <div class="container">
+      <div class="links editing">
+          <a href="#" class="edit_criterion_link"><i class="icon-edit standalone-icon"></i><span class="screenreader-only">Edit criterion description</span></a>
+        <a href="#" class="delete_criterion_link"><i class="icon-trash standalone-icon"></i><span class="screenreader-only">Delete criterion row</span></a>
+      </div>
+      <div class="description_content">
+        <span class="outcome_sr_content" aria-hidden="true">
+          <i class="learning_outcome_flag icon-outcomes" aria-hidden="true"></i>
+          <span class="screenreader-only">This criterion is linked to a learning outcome</span>
+        </span>
+        <span class="description description_title">Description of criterion</span>
+        <span class="learning_outcome_id" style="display: none;"></span>
+        <span class="criterion_id" style="display: none;"></span>
+          <div class="long_description small_description"></div>
+        <div style="display: none;" class="long_description_holder editing empty">
+          <a href="#" class="long_description_link hidden">view longer description</a>
+          <textarea class="long_description" aria-label="Long description" style="display: none;"></textarea>
+        </div>
+        <div class="hide_when_learning_outcome hidden">
+          <div class="criterion_use_range_div editing">
+            <label>Range
+              <input type="checkbox" class="criterion_use_range" /></label>
+          </div>
+        </div>
+        <div class="threshold">
+          threshold:
+          <span class="mastery_points">5</span> pts
+        </div>
+      </div>
+
+    </div>
+  </td>
+  <td style="padding: 0;">
+      <table class="ratings" style=""><tr>
+          <td id="rating_blank"
+              class="rating edge_rating
+                
+                "
+          <div class="container">
+              <div class="editing links">
+                <a href="#" class="edit_rating_link"><i class="icon-edit standalone-icon"></i><span class="screenreader-only">Edit rating</span></a>
+                <a href="#" class="delete_rating_link"><i class="icon-trash standalone-icon" ></i><span class="screenreader-only">Delete rating</span></a>
+              </div>
+              <div class="clear"></div>
+            <span class="nobr">
+              <span class="points">5</span>
+              <span class="range_rating" style="display: none;">to ><span class="min_points">0</span></span> Pts
+            </span>
+            <div class="description rating_description_value">Full marks</div>
+            <div class="rating_long_description small_description"></div>
+            <span class="rating_id" style="display: none;">blank</span>
+              <div class="editing links add_rating_link">
+                <a href="#" class="add_rating_link_after" aria-label="Add rating"><i class="icon-add icon-Solid"></i></a>
+              </div>
+          </div>
+          </td>
+          <td id="rating_blank_2"
+              class="rating edge_rating
+                infinitesimal
+                "
+          <div class="container">
+              <div class="editing links">
+                <a href="#" class="edit_rating_link"><i class="icon-edit standalone-icon"></i><span class="screenreader-only">Edit rating</span></a>
+                <a href="#" class="delete_rating_link"><i class="icon-trash standalone-icon" ></i><span class="screenreader-only">Delete rating</span></a>
+              </div>
+              <div class="clear"></div>
+            <span class="nobr">
+              <span class="points">0</span>
+              <span class="range_rating" style="display: none;">to ><span class="min_points">0</span></span> Pts
+            </span>
+            <div class="description rating_description_value">No marks</div>
+            <div class="rating_long_description small_description"></div>
+            <span class="rating_id" style="display: none;">blank_2</span>
+              <div class="editing links add_rating_link">
+                <a href="#" class="add_rating_link_after" aria-label="Add rating"><i class="icon-add icon-Solid"></i></a>
+              </div>
+          </div>
+          </td>
+      </tr></table>
+      <div style="display: none; font-style: italic; font-size: 0.8em; margin: 5px;" class="custom_ratings">
+        This area will be used by the assessor to leave comments related to this criterion.
+      </div>
+  </td>
+  <td class="nobr points_form">
+    <div class="editing" style="white-space: normal">
+      <span style="white-space: nowrap; font-size: 0.8em">
+          
+            <input
+              type="text"
+              aria-label="Points"
+              value="5"
+              class="criterion_points span1 no-margin-bottom"
+            />
+           pts
+      </span><br />
+    </div>
+    <div class="displaying">
+      <span style="white-space: nowrap;">
+        <span class="criterion_rating_points_holder" style="display: none;">
+          <span class="criterion_rating_points">&nbsp;</span> /
+        </span>
+        <span class="display_criterion_points">5</span> pts<br />
+      </span>
+    </div>
+    <div class="ignoring">
+      <span> -- </span>
+    </div>
+    <div class="criterion_comments">
+        <a href="#" class="no-hover criterion_comments_link" title="Additional comments">
+          <img alt="Additional comments" src="https://du11hjcvx0uqb.cloudfront.net/dist/images/rubric_comment-ddae8546ab.png" />
+        </a>
+        <div class="custom_rating" style="display: none;"></div>
+    </div>
+  </td>
+</tr>
+
+  <tr class="summary">
+    <td colspan="4">
+      <div class="total_points_holder" style="float: right; ">
+        <span>Total points:
+            <span class="rubric_total">
+              5
+            </span>
+ <span class="assessing">out of 5</span>        </span>
+      </div>
+      <div class="editing pull-left">
+        <span id="add_criterion_holder" class="criterion_link"></span>
+      </div>
+      <div class="clear"></div>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<table style="display: none;">
+  <tr id="edit_rubric">
+    <td colspan="4">
+      <form id="edit_rubric_form" class="edit-rubric-form no-margin-bottom">
+        <div class="rubric_custom_ratings" style="">
+          <input type="checkbox" id="rubric_custom_rating" class="rubric_custom_rating" />
+          <label for="rubric_custom_rating">I&#39;ll write free-form comments when assessing students</label>
+        </div>
+          <div class="rubric_grading" style="">
+            <input type="checkbox" id="grading_rubric" class="grading_rubric_checkbox" />
+            <label for="grading_rubric">Use this rubric for assignment grading</label>
+          </div>
+        <div class="totalling_rubric" style="">
+          <input type="checkbox" id="totalling_rubric" class="totalling_rubric_checkbox" />
+          <label for="totalling_rubric">Hide score total for assessment results</label>
+        </div>
+        <div class="ic-Action-header ic-Action-header--half-margin">
+          <div class="ic-Action-header__Primary">
+            <button type="button" class="Button cancel_button">Cancel</button>
+            <button type="submit" class="Button Button--primary save_button">Create rubric</button>
+          </div>
+        </div>
+      </form>
+    </td>
+  </tr>
+</table>
+
+  
+  <div id="sequence_footer" data-course-id="73" data-asset-id="3283" data-asset-type="Assignment"></div>
+
+
+
+          </div>
+        </div>
+        <div id="right-side-wrapper" class="ic-app-main-content__secondary">
+          <aside id="right-side" role="complementary">
+            
+<div id="sidebar_content">
+
+
+</div>
+
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <div style="display:none;"><!-- Everything inside of this should always stay hidden -->
+        <div id="page_view_id">5e849785-f193-458e-9502-39e354eafe95</div>
+    </div>
+  <div id='aria_alerts' class='hide-text affix' role="alert" aria-live="assertive"></div>
+  <div id='StudentTray__Container'></div>
+  
+
+<script>
+  INST = {"environment":"production","allowMediaComments":true,"kalturaSettings":{"domain":"eu.nv.instructuremedia.com","resource_domain":"eu.nv.instructuremedia.com","rtmp_domain":"eu.fms-prod.instructuremedia.com","partner_id":"5","subpartner_id":"0","player_ui_conf":"0","kcw_ui_conf":"0","upload_ui_conf":"0","max_file_size_bytes":534773760,"do_analytics":false,"hide_rte_button":false,"js_uploader":true},"googleAnalyticsAccount":"UA-9138420-1","logPageViews":true,"maxVisibleEditorButtons":3,"editorButtons":[{"name":"YouTube","id":39,"url":"https://www.edu-apps.org/lti_public_resources/?tool_id=youtube","icon_url":"https://www.edu-apps.org/assets/lti_public_resources/youtube_icon.png","canvas_icon_class":null,"width":560,"height":600},{"name":"GitHub","id":41,"url":"https://www.edu-apps.org/tool_redirect?id=github","icon_url":"https://www.edu-apps.org/tools/github/icon.png","canvas_icon_class":null,"width":600,"height":320},{"name":"Code Embed","id":42,"url":"https://code-embed-lti.herokuapp.com/lti_tool","icon_url":"https://code-embed-lti.herokuapp.com/images/icon.png","canvas_icon_class":null,"width":850,"height":650}]};
+  ENV = {"ASSET_HOST":"https://du11hjcvx0uqb.cloudfront.net","active_brand_config_json_url":"https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/948c0fc17f278197475390801c3d0784/variables-750d72b9d3e5d522f965bf904110c132.json","url_to_what_gets_loaded_inside_the_tinymce_editor_css":["https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/948c0fc17f278197475390801c3d0784/variables-750d72b9d3e5d522f965bf904110c132.css","https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_normal_contrast/bundles/what_gets_loaded_inside_the_tinymce_editor-53dac18d10.css"],"url_for_high_contrast_tinymce_editor_css":["https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/default/variables-high_contrast-750d72b9d3e5d522f965bf904110c132.css","https://du11hjcvx0uqb.cloudfront.net/dist/brandable_css/new_styles_high_contrast/bundles/what_gets_loaded_inside_the_tinymce_editor-b4d65fe883.css"],"current_user_id":"833","current_user_roles":["user","student"],"current_user_disabled_inbox":false,"files_domain":"cluster15-files.instructure.com","DOMAIN_ROOT_ACCOUNT_ID":80170000000000001,"k12":false,"use_responsive_layout":false,"help_link_name":"Help","help_link_icon":"help","use_high_contrast":false,"LTI_LAUNCH_FRAME_ALLOWANCES":["geolocation *","microphone *","camera *","midi *","encrypted-media *"],"SETTINGS":{"open_registration":false,"eportfolios_enabled":true,"collapse_global_nav":true,"show_feedback_link":true,"enable_profiles":true},"current_user":{"id":"833","display_name":"Paweł Popowicz","avatar_image_url":"https://codecool.instructure.com/images/thumbnails/27622/ljnSl6KwMq9kIRWByD6CCgGDD3vjlwAb8b3dWDCp","html_url":"https://codecool.instructure.com/about/833"},"page_view_update_url":"/page_views/5e849785-f193-458e-9502-39e354eafe95?page_view_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpIjoiNWU4NDk3ODUtZjE5My00NThlLTk1MDItMzllMzU0ZWFmZTk1IiwidSI6ODAxNzAwMDAwMDAwMDA4MzMsImMiOiIyMDE4LTA2LTExVDA0OjEyOjQ3LjQwWiJ9.fCh-8ZIXk9_TIK4abeo2dX788BKQBsUbEm0m8z6PO4M","context_asset_string":"course_73","ping_url":"https://codecool.instructure.com/api/v1/courses/73/ping","TIMEZONE":"Europe/Budapest","CONTEXT_TIMEZONE":"Europe/Budapest","LOCALE":"en-GB","BIGEASY_LOCALE":"en_GB","FULLCALENDAR_LOCALE":"en-gb","MOMENT_LOCALE":"en-gb","RICH_CONTENT_SERVICE_ENABLED":true,"RICH_CONTENT_APP_HOST":"rich-content-dub.inscloudgate.net","RICH_CONTENT_CDN_HOST":"dvgcns7dz7zc.cloudfront.net/rce_service/versions/","RICH_CONTENT_SKIP_SIDEBAR":null,"JWT":"ZXlKaGJHY2lPaUprYVhJaUxDSmxibU1pT2lKQk1qVTJSME5OSW4wLi5TMEltN0F2Q0JvTXNnMlB5LlhEdU9pQWdfTURhOWdwQThmNGRtellIVnUyRTI4dU5Yd3I4b0JJM3VNeVZMazBYbUxZTVh4WUYzak1mRE5HYU1UMm12Zk1nbi1ENW5kVkJ3QkpLaUdEWEllQk1rMnNaZUR4Z0Y2NEU3NUFRblNQbE9yTmRjQ2dqN0VVU0lqVTV4eWplVkFsYjhwUkQ2MlFBQmFxSjNmcWlfdEpkc0YxRi1Tc3BDQXVhSkFNOE9KQVZ6S3F3MVc5LTZkQmd2WWlDbUZfQ0c2bTR5bDNDNzlRbFNNc1I5Uno0WklFUHBaY1FhWTZpWWNTRnNQZXpRMUFaNDFJRVR5U0hwWkxJZTRiRkNOYmxSOUlzd21mN2ozSmlHcnlpaVF4TTYtNURHdzloUzZrM3V0WFZKYWV0SXNZNkVXTDItbmppMkt2YkNUTnBMRDdDbnY0TFRwS2ctT2lfRFc5NHFEMnVScDFXMGU4cl9MdXV5bllXUkpHWkF0TC1WY000QzRTX2ZCcXJIZzQ0dkhKc0NINTJPUmlWTnRncFF0LTc0eUVFZXVJNlRHTkF2NklqaDlKWUpxNlFuQk9Fb0tJcWtfbzkyN1VvN2NOM3hkWDZvbjRvT1dOcVJ6YlVEbkx6Mm1YX3EtaFM2ZXZxRERkSXBNcUxEV0dfQjdYenAwS2plV01RYjd2QjdSay1zSElyXzRmOS1fR2tIZ0ZMVllwOVdMRDg5ejlFYjgtcUN0a0NkS29GVXp0eHdfbEgxQlplMEJ0R1BRa0xwY194OUd2T0huQlAxVTRoVHhVQXIyWEpCM3lpSmE2eGgtSDN3WUQxdWlMZWUwcG82OUFnSmQzU2tob0c3QmU5bnJwOE5UcE1ERl8yTExFQU16MjNrTHNQUVZtNVZ1OW5WZW5Ud04zSHY3eV9WYjVTR3RTYzc1TWxEY2JqUjlWN24xXzA1aXVsYmZJdEJVRVlIMzNCQjRYTC1vdFVadVRCOU5oWmdZYUpZNHlQSFl0ck9pWVlwUDVtTGVMazVEOUYzMS1lSnQ4ZlNYR3llZ2lhdXkyTzdTaG1qY2VVVkFUUDJZUTJKdi1nLTQ5bjV5R3MuVkdXSkJzVDRrZEJvdjhPOWpHNk8ydw==","RICH_CONTENT_CAN_UPLOAD_FILES":false,"ROOT_OUTCOME_GROUP":{"id":"211","title":"Codecool Kraków 2017.3","vendor_guid":null,"url":"/api/v1/courses/73/outcome_groups/211","subgroups_url":"/api/v1/courses/73/outcome_groups/211/subgroups","outcomes_url":"/api/v1/courses/73/outcome_groups/211/outcomes","can_edit":false,"import_url":"/api/v1/courses/73/outcome_groups/211/import","context_id":"73","context_type":"Course","description":null},"COURSE_ID":73,"ASSIGNMENT_ID":3283,"EXTERNAL_TOOLS":[{"id":"42","domain":"code-embed-lti.herokuapp.com","url":"https://code-embed-lti.herokuapp.com/lti_tool","consumer_key":"N/A","name":"Code Embed","description":"Code Embed is a tool that lets you embed a code editor in an LMS such as Canvas, Blackboard, or Moodle.","created_at":"2016-02-24T10:02:35Z","updated_at":"2016-02-24T10:02:35Z","privacy_level":"public","custom_fields":{},"workflow_state":"public","vendor_help_link":null,"account_navigation":null,"similarity_detection":null,"assignment_menu":null,"assignment_selection":null,"collaboration":null,"course_assignments_menu":null,"course_home_sub_navigation":null,"course_navigation":null,"course_settings_sub_navigation":null,"discussion_topic_menu":null,"editor_button":{"enabled":"true","selection_height":650,"selection_width":850,"label":"Code Embed","icon_url":"https://code-embed-lti.herokuapp.com/images/icon.png"},"file_menu":null,"global_navigation":null,"homework_submission":{"enabled":"true","selection_height":650,"selection_width":850,"label":"Code Embed","icon_url":"https://code-embed-lti.herokuapp.com/images/icon.png"},"link_selection":null,"migration_selection":null,"module_menu":null,"post_grades":null,"quiz_menu":null,"resource_selection":{"enabled":"true","selection_height":650,"selection_width":850,"label":"Code Embed","icon_url":"https://code-embed-lti.herokuapp.com/images/icon.png"},"tool_configuration":null,"user_navigation":null,"wiki_page_menu":null,"icon_url":"https://code-embed-lti.herokuapp.com/images/icon.png","not_selectable":false}],"EULA_URL":null,"CONDITIONAL_RELEASE_SERVICE_ENABLED":true,"CONDITIONAL_RELEASE_ENV":{"jwt":"ZXlKaGJHY2lPaUprYVhJaUxDSmxibU1pT2lKQk1qVTJSME5OSW4wLi5tSndDenZqZzJQLVlySWYwLkhTODJSRVh6MTNPTUVfUm5fT1RJc09DZUFsSnhJanVLdGI3elRDWUQ0eDdsV1hKWkVXYUFmLVVnek0zTHlUMEd1b3JHVTVsNUZ5cks3aXVDSjhLVE01UGRRdm9RMEtxRTBwUjlJcHlmdndubHhQUVNSeFFEc0NnZWFmcjd2SzFaV0dVQmFlQ29OTjJzN2lIdTV0eW5UVkIzcEVvU2ZJcXAyVFFpZm5velFWS2ZDSy1JRDJDNTdIdllwVlBOYWlWb25aRVBXMXc5Mi1DT3dZS2xMV0F0UEY0djlmQWpSakxJV2t0OVpMMlZNR1FYX195M0UxM3BlZk0zNkU5MnVwVXRNX1lrZUlJVmZLRWpLdktXMGZ2VElVWV9oc2R2SkxGbjZ1ekdOakprUDlJMjFCQklKQXlIZU1BRHdEZWRmSVpGTzJFYS0tVGY4OGRScldDaUI1R0RzTHltQWVRU3J6LXYtOGd4Tzc4QTFnblU1M1UxXzNrT1MxcTRjSXJ4LXlmM2ZKZ1ZGam1YeW84WUlLTDlVMm85RENfbk5sckVyTVZJaTd5LVdHUjdlVWJONjNzRGJUNFYxbW9VcUk3a21CaWpySjV0eXZ2ZFFxRmJ0a2xEeW1tQnZVel9laXl0WnlfZGpoUXJJYTFNalh4dlR2S2o3TEk5c3JzR0taVWg2c0U4Mmt6X3haaVhOSlpFYUpMdGsxbzRHcWtzTHVqd3JuV1liTDFWM2R3YTd1aDJmR2xydmk5d1djTlljSkxVdHptdWRidlZiaUFIOE12Zk1wcGQ3Z0lGd0NVVmJaZVoxcGg4M0JkbFFmTThoM3NhZWltVTk1QkhuMlBsdG9oelYyZnlPanJQdTFGZGtUYXl1dWxNb2NDbEVRMmFOVU56Uzc5T1d3ZVRla1F1SmYyX2RRWFJLTjVhRlV4ellSMUp0dmNSYlR4eGJHdklqMElwZkMweUtFaFZYcU1PcVVXVFQzM0laTjVIcEhuQjA5a3NHVDZFRmdnazJKM0R4SHp0dTNENW45VC1RQkhkaGE0QklIenlMZHBNYWNfenFYV3hjOWZzN2M0dm9xdVhLMFBGTnNYNV9xUm9qX2ZuSEFFbF9NN1NELU5Vb25TRkJRN2NKSVBFSlRfYk1HQjZQRFFWemJJUmdwbG80LWZNOWxWdmZYaHBaMGMyanNNdGVDX1VJMTFOeXNMbk52TmI5R2FCcjNuWVVMM2hLRHhPSEVjMjdwRkR1LS00SFdTam1nMmJMOUM5TmVlVkYwd1pTX3dXc2dZcTFkNWVkMGJBdVV1bXlWNl9RWTYzcFNzR1M5UEJ0dzRHdk9naWpTVTNicEtTcURRb2wxWVljNk1qd2lVazV1T2NiMWZZSDJwWU94QllqdTFGbnl3XzZlSEtibGtmMF80SWVHZVRBM21hckotZzRCQ1dkMnBqckdLUnNwUDdSY0RWdTFJaC1pcHN5dXV3OFZyZVBhM1p3ejZsMS11c09Hek01dzlGZVFQeEd1SWhnTGZsMVE4eGZKMDlyQjlzLUlaSjZnS1ZOcjdiZDhteEhGT1IzVmtMM0xXQm00WmpkQ0NsblEwMTc1LWpYaWRVRHdxc0ZhenRGM3lVWmlxWWNPb3d5UVRRUnVhWUlmcW1TSGdmT2FLc0hzNDl2RTU4aXVqd1VVVWE4X1A2Qll1cGV0ZnpHNF9BS2dNZUhlQjRwQ2RkdWZsc29RVU1Jc05tbkl6Z3paXzA2eDFodVRjbEU2eUJTWFNaMGctSmwxM3BycXhQMkFMMWd6d0Fkdml5S0UxX2lwMTJncnVYTWF5Uzc5YXFTOGdFOV8tbm9RSmhaMjdjTU5BRHNmbEpMUDNUaHlNaWoxUXpxNmVKQTZ2enJMUC1idFd6SFU4QVdfdWpmSV9fX2NERXQtRVl2X1VVVzlDNThlYlBaaUl3OU5DODZhNXA4SGRfc0RUSkJwQ28yc0hKX2RnMy03d1BYOWZmcl9OUWs0c2pGaGFkNzJzdHV2TTF6ZmJMTUsxMzZ0OHktNUpqOEJzZjQxdjJKYzd5bUN1RFBCeUVZdXBVMHZkLVhQZkhBdk9yWEVNZ0VPeEZGX2RadnR3LS1KUDgzVUxRZ3VYU3Q0THBBUHhWdWpGcEFXZ3pKdkdaRHBqbXZhWnNaSEx5TFNDa1lMRFpnSUJZVGc4cFVRTkVfRG1wWGQ0WFM3RzBiSnFtUDFibkZmRmEzZ210dGlKelpNUU9rLWZKTk40YS1RLUtBNk9BcU51eTBQVEZqSlRpMkFkX3ZWbnQ3a2pnY1FfWEdFdl85YUVFeGs4bGVtSDI4MWJRZ0VPc2xhazJ1cFNOOUdMenB3dHdMTG4yQUdicVFTVlBwLVJmX1ZRNEY4VkNDQkFwd2Y1X0gwOTVCSmZCdUZFTElFOWVZeV9mbUExU1k0QjNQdzRNUUl1UDUtbEtSUXlUYjBqTzFPdHZBTGNqMmI5SmJEdHE2b2hhb0ZtY1VPUlMxeEtuWTI4UHNSb2h1bmFrbmZ1R0x0SW5JYU9JZ01wTDFsekFsZERqSnZtNVUxMFJvODBpRk51OTJ0ZmJnR0xmWHRKQXVRdVVMSEZaZzVhc0QxZGJ2QmZQeVJYWXdTSV9OaHpoNlZmd2F3MW1BRHUyQzVBX3RaZ0M4eU5TOHpGSGJHOTh6LWo0SDZmMHp1TzNvcFFKbVBxRnluclRudElKbWdaUE0xWUk0dWFtRkFndllRUmJhQ25zaWN1Nm5LZEhXdVphOG9ZZDNZMVZlRGRfcldXMERDbkhnNGc2VFVqTzdCYjFkVDdkeDlKbmJQNy0tTGNJdnh1OEtaQXplSjF6R3JuTko3Q1gxQ2FnSndvd3NVNnZkcUZaSFZlU3Y3T1lLd3BzY2k1M29Zb1hNZzY0Z2VuUzc4OHFjT3FJLmlaU1FkOWlUT3RCa3NRNjBUdG5QSHc=","assignment":{"id":"3283","title":"Text Analyser","description":"\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eYour goal is to implement a tool for lexical analysis of text data.\u003c/span\u003e\u003c/p\u003e\r\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eHere’s an example of the programs usage and output with descriptions:\u003c/span\u003e\u003c/p\u003e\r\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u0026gt;\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003ci\u003e\u003cspan style=\"font-weight: 400;\"\u003ejava Application text1.txt text2.txt\u003c/span\u003e\u003c/i\u003e\u003c/p\u003e\r\n\u003cpre\u003e\u003cspan style=\"font-weight: 400;\"\u003e==text1.txt== \u003c/span\u003e\u003cstrong\u003e\u003cspan style=\"background-color: #99cc00;\"\u003ename of the analyzed file\u003c/span\u003e\u003cbr\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003eChar count: 761674 \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003enumber of characters in the file (without white-spaces)\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003eWord count: 188912 \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003enumber of words in the file\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003eDict size: 10762\u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003e dictionary size: number of different words used\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003eMost used words (\u0026gt;1%): [a,and,had..\u0026lt;more\u0026gt;] \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003eall words that make up for more than 1% of the text\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e'love' count: 60 \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003enumber of times that the word ‘love’ occurred\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e'hate' count: 4 \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003enumber of times that the word ‘hate’ occurred\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e'music' count: 4 \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003enumber of times that the word ‘music’ occurred\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003evowels %: 38 \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003ewhat part of all characters are vowels (a,o,i,e,u)\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e'a:e count ratio' : 1.54 \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003ethe ratio of ‘a’ to ‘e’ occurrences\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e[ G -\u0026gt; 2.16] [ R -\u0026gt; 5.36] ....\u0026lt;and the rest\u0026gt; \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003e% of in whole text of all the letters\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003e==text2.txt== \u003c/span\u003e\u003cspan style=\"background-color: #99cc00;\"\u003e\u003cstrong\u003eanother file… everything like above\u003c/strong\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan style=\"font-weight: 400;\"\u003eChar count: 955387\u003cbr\u003eWord count: 219044\u003cbr\u003eDict size: 16957\u003cbr\u003eMost used words (\u0026gt;1%): [a,and,his,in,it,of,that,the,to]\u003cbr\u003e'love' count: 24\u003cbr\u003e'hate' count: 9\u003cbr\u003e'music' count: 4\u003cbr\u003evowels %: 37\u003cbr\u003e'a:e count ratio' : 1.49\u003cbr\u003e[ M -\u0026gt; 2.44] [ O -\u0026gt; 7.27] [ B -\u0026gt; 1.77] …. \u0026lt;and the rest\u0026gt;\u003cbr\u003e\u003cspan style=\"text-decoration: underline;\"\u003eBenchmark time: 1.419 secs \u003c/span\u003e\u003c/span\u003e\u003cspan style=\"text-decoration: underline; background-color: #99cc00;\"\u003e\u003cstrong\u003eTime it took the program to run\u003c/strong\u003e\u003c/span\u003e\u003c/pre\u003e\r\n\u003cp\u003e\u003cstrong\u003eYou can find test files in your \u003ca href=\"https://classroom.github.com/a/V2UVnpb3\"\u003eclassroom repository\u003c/a\u003e\u003c/strong\u003e\u003c/p\u003e\r\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eTake a look at the UML diagram.\u003c/span\u003e\u003c/p\u003e\r\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eNOTES:\u003c/span\u003e\u003c/p\u003e\r\n\u003col\u003e\r\n\u003col\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cspan style=\"font-weight: 400;\"\u003ePrivate methods are not shown on the diagram.\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003cspan style=\"font-weight: 400;\"\u003eYou are free to implement any necessary/helpful private methods in any class.\u003c/span\u003e\n\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\u003cspan style=\"font-weight: 400;\"\u003eUse the Iterator interface from java.util. You don’t have to create your own.\u003c/span\u003e\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\u003cstrong\u003eThe input files will only consist of alphabetic characters and white spaces.\u003c/strong\u003e\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\u003cspan style=\"font-weight: 400;\"\u003eThe input file will consist both upper and lower case characters. You should use only one case to ensure that the results of the analysis will be consistent.\u003c/span\u003e\u003c/li\u003e\r\n\u003c/ol\u003e\r\n\u003c/ol\u003e\r\n\u003cp\u003e \u003c/p\u003e\r\n\u003cp\u003e \u003cimg src=\"/files/22301/download?download_frd=1\u0026amp;verifier=gG4s4Xbx4BV0zbGT5KJyxQdD5nGDSUnyGgEVF3oI\" alt=\"cp3.png\" data-api-endpoint=\"https://codecool.instructure.com/api/v1/files/22301\" data-api-returntype=\"File\"\u003e\u003c/p\u003e\r\n\u003cp\u003e \u003c/p\u003e\r\n\u003cp\u003e\u003cspan style=\"font-weight: 400;\"\u003eClasses to implement:\u003c/span\u003e\u003c/p\u003e\r\n\u003col\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cstrong\u003eIterableText\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003einterface. Create the interface with required methods.\u003c/span\u003e\n\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cstrong\u003eFileContent -\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003cspan\u003e \u003c/span\u003eclass responsible for reading text files and providing its content through implementing\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003cstrong\u003eIterableText\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003einterface. The content will be provided through methods\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003cstrong\u003echarIterator()\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003eand\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003cstrong\u003ewordIterator().\u003c/strong\u003e\n\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cstrong\u003eCharIterator\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003esuccessively iterates over alphabetic characters (single letters) of the text. It skips all other characters (like white-spaces). Implements next() and hasNext() from\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003cstrong\u003eIterator\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003einterface. NOTE: Chars are represented as Strings for the sake of simplicity. Remember that characters’ case (UPPER or lower) should be consistent in our analysis.\u003c/span\u003e\n\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cstrong\u003eWordIterator\u003c/strong\u003e\u003cstrong\u003e   \u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003esuccessively iterates over words of the text. Words in the text are separated with white-spaces. Implements next() and hasNext() from\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003cstrong\u003eIterator\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003einterface.\u003c/span\u003e\n\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cstrong\u003eStatisticalAnalysis\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003eis the dataset. It is initialized with Iterator\u0026lt;String\u0026gt; and provides functions for statistical analysis of the text elements (Strings). NOTE: You may choose any data structure to store the processed data. The choice will affect the amount of code you will have to write.\u003c/span\u003e\n\u003c/li\u003e\r\n\u003col\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cspan style=\"font-weight: 400;\"\u003ecountOf(String… elems) function returns sum of all occurrences (in the dataset) of the elements given as arguments (\u003c/span\u003e\u003ci\u003e\u003cspan style=\"font-weight: 400;\"\u003eelems)\u003c/span\u003e\u003c/i\u003e\u003cspan style=\"font-weight: 400;\"\u003e. Note: One string may be given as well. The three-dots operator will help you pass variable number of arguments to the function and access them with ease.\u003c/span\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003cbr\u003e\u003c/span\u003e\u003ca href=\"https://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html#varargs\"\u003e\u003cspan style=\"font-weight: 400;\"\u003ehttps://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html#varargs\u003c/span\u003e\u003c/a\u003e\n\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\u003cspan style=\"font-weight: 400;\"\u003edictionarySize() function returns the number of unique elements of the dataset. It’s the size so-called Author’s Dictionary - the set of different words the author of the text uses.\u003c/span\u003e\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\u003cspan style=\"font-weight: 400;\"\u003esize() returns the total number of all elements in the dataset. This will be total number of words or total number of characters.\u003c/span\u003e\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cspan style=\"font-weight: 400;\"\u003eoccurMoreThan(Integer\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003ci\u003e\u003cspan style=\"font-weight: 400;\"\u003en\u003c/span\u003e\u003c/i\u003e\u003cspan style=\"font-weight: 400;\"\u003e) returns all the elements that occur more than\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003ci\u003e\u003cspan style=\"font-weight: 400;\"\u003en\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003c/i\u003e\u003ci\u003e\u003cspan style=\"font-weight: 400;\"\u003etimes\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003c/i\u003e\u003cspan style=\"font-weight: 400;\"\u003ein the dataset\u003c/span\u003e\n\u003c/li\u003e\r\n\u003c/ol\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cstrong\u003eView\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003ethis class should be responsible for presenting the data to the user.\u003cspan\u003e \u003c/span\u003e\u003cspan style=\"text-decoration: underline;\"\u003eYou are free to implement any functions you find sensible. NOTE: In case of this class you don’t have to follow the UML diagram.\u003c/span\u003e\u003c/span\u003e\n\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cstrong\u003eApplication\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003emain class of the program. It should allow the user to pass to text files for analysis as CLI arguments. Also,\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003cstrong\u003emeasure\u003cspan\u003e \u003c/span\u003e\u003c/strong\u003e\u003cspan style=\"font-weight: 400;\"\u003ethe time of the program's execution. For example:\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003cbr\u003e\u003c/span\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u0026gt;\u003cspan\u003e \u003c/span\u003e\u003c/span\u003e\u003ci\u003e\u003cspan style=\"font-weight: 400;\"\u003ejava Application text1.txt text2.txt\u003c/span\u003e\u003c/i\u003e\n\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\u003cspan style=\"font-weight: 400;\"\u003eHandle only those exceptions which are required to be handled by the functions and methods you use. Custom error messages are not required (printStackTrace() can be used).\u003c/span\u003e\u003c/li\u003e\r\n\u003cli style=\"font-weight: 400;\"\u003e\n\u003cspan style=\"font-weight: 400;\"\u003eThe structure of packages tree is not restricted by anything but clean code principles.\u003c/span\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003c/span\u003e\n\u003c/li\u003e\r\n\u003c/ol\u003e\r\n\u003ch3\u003e\u003cspan style=\"font-weight: 400;\"\u003e\u003ca class=\"\" title=\"Link\" href=\"https://classroom.github.com/a/zHn2Oci0\" data-preview-alt=\"\"\u003e\u003c/a\u003e\u003c/span\u003e\u003c/h3\u003e","points_possible":0.0,"grading_type":"pass_fail","submission_types":"online_url","grading_scheme":null},"stats_url":"https://conditional-release-dub-prod.instructure.com/stats","locale":"en-GB","editor_url":"https://conditional-release-dub-prod.instructure.com/javascripts/generated/conditional_release_editor.bundle.js","base_url":"https://conditional-release-dub-prod.instructure.com/","context_id":"73","rule":null},"SUBMIT_ASSIGNMENT":{"ALLOWED_EXTENSIONS":[],"ID":3283,"GROUP_ID_FOR_USER":null},"badge_counts":{"submissions":0},"notices":[]};
+</script>
+
+<script src="https://du11hjcvx0uqb.cloudfront.net/dist/webpack-production/navigation_header.bundle-f69e6aab0c.js" defer="defer"></script>
+
+
+</div> <!-- #application -->
+</body>
+</html>
