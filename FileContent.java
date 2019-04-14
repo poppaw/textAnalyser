@@ -6,13 +6,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class FileContent implements IterableText<String> {
+
     private String fileName;
     private List<String> words;
-    private List<String> letters; //Aga doesn't agree with it.
+    private List<String> letters; //Aga suggests without it.
     //private String rawText = "";
     static Scanner reader;
 
-    FileContent(String fileName) throws FileNotFoundException {
+    public FileContent(String fileName) throws FileNotFoundException {
         this.fileName = fileName;
         words = new ArrayList<>();
         letters = new ArrayList<>();
@@ -20,7 +21,7 @@ public class FileContent implements IterableText<String> {
         while (reader.hasNext()) {
             String aWord = reader.next();
                 words.add(aWord);
-                //rawText += aWord + " ";//nobody knows if needs it;
+                //rawText += aWord + " ";//nobody knows if we need it;
                 for (char ch: aWord.toCharArray()) {
                     letters.add(String.valueOf(ch));   
                 }
@@ -30,84 +31,56 @@ public class FileContent implements IterableText<String> {
     @Override //?necessary Override?
     public Iterator<String> wordIterator(){ //throws NoSuchElementException
         return words.iterator();
-
+    }
+    //2nd implementation:
         // class WordIt{
         /*
-        * Throw NoSuchElementException as defined by the Iterator contract,
+        * Throw NoSuchElementException,
         * not IndexOutOfBoundsException.
         
         int index = 0;
         hasNext(){
             return index < words.size();
         }
+        next(){
+            if (!hasNext())
+                throw new NoSuchElementException();
+            return words.get(index++);
+        }*/
 
-      if (!hasNext())
-        throw new NoSuchElementException();
-      return words.get(index++); // 1st possible implementation;*/
-        
-    }
-
-    @Override // as above;
+    @Override // @Override?;
     public Iterator<String> charIterator(){ //throws NoSuchElementException
         return letters.iterator();
+    }
 
+        //2nd implementation;
         //class charIt{
         /*
-        * Throw NoSuchElementException as defined by the Iterator contract,
-        * not IndexOutOfBoundsException.
-        
+        * Throw NoSuchElementException not IndexOutOfBoundsException. 
         int index = 0;
         hasNext(){
             return index < letters.size();
         }
+        next()
+            if (!hasNext())
+                throw new NoSuchElementException();
+            return letters.get(index++);
+        }
+        */
 
-      if (!hasNext())
-        throw new NoSuchElementException();
-      return letters.get(index++); // 1st possible implementation;
-    }
-      */
-    }
+    /*
+    * necessary only in case of 2nd Iterator implementation:
 
+        List<String> getWords(){ //default; 
+            return words;
+        }
 
-    public List<String> getWords(){ //should be default acc. to Aga
-        return words;
-    }
+        List<String> getLetters(){ //default;           
+            return letters;
+        }
+    */
 
-    List<String> getLetters(){ //default, not public!!!!            
-        return letters;
-    }
-
-    public int getTextSize(){ //mogłoby być użyteczne gdyby nie specyfikacja
-        return words.size();
-    }
-
-    public int lettersNumber(){ // j.w.
-        return letters.size();
-    }
-    
-    public String toString(){
-        return words.toString();
-    }
-
-    public String lettersToString(){ // nobody knows...
-        return letters.toString();
-    }
-    
     public String getFileName(){
         return fileName;
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        FileContent test = new FileContent("test.txt");
-        //System.out.println(test.getTextSize());
-        System.out.println(test.wordIterator().next());
-        //System.out.println(test.lettersNumber());
-        Iterator<String> pluszak = test.wordIterator();
-        while(pluszak.hasNext()) System.out.println(pluszak.next());
-        //System.out.println("Letters:\n" + test.letters);
-    }
-
-
-
-
 }

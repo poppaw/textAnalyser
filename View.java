@@ -5,11 +5,43 @@ import java.io.FileNotFoundException;
 import static java.lang.System.currentTimeMillis;
 
 
-
 public class View {
-    //private StatisticalAnalysis analyser;
 
-    public static void printEntireSize(StatisticalAnalysis analyser){
+    private FileContent content;
+    private Iterator<String> charIt;
+    private Iterator<String> wordIt;
+    private StatisticalAnalysis charAnalyser;
+    private StatisticalAnalysis wordAnalyser;
+
+
+    public View(String fileName) throws FileNotFoundException {
+
+            content = new FileContent(fileName);
+            charIt = new CharIterator(content);
+            wordIt = new WordIterator(content);
+            charAnalyser = new StatisticalAnalysis(charIt);
+            wordAnalyser = new StatisticalAnalysis(wordIt);
+        }
+    
+    
+
+    public void printAllAnalysis(){
+        Long startTime = currentTimeMillis();
+        printHead();
+        printEntireSize(charAnalyser);
+        printEntireSize(wordAnalyser);
+        printDictSize(wordAnalyser);
+        printMostPopular(wordAnalyser, 1);
+        Long endTime = currentTimeMillis();
+        System.out.println("Benchmark time: " + (endTime-startTime) + "mss.");
+
+    }
+
+    private void printHead(){
+        System.out.printf("==%s==\n",content.getFileName());
+    }
+
+    private static void printEntireSize(StatisticalAnalysis analyser){
         String type = removeSuffix(analyser);
         System.out.printf("%s count: %d \n", type, analyser.size());
     }
@@ -23,43 +55,29 @@ public class View {
         
     }
 
-    public static void printDictSize(StatisticalAnalysis analyser){
+    private static void printDictSize(StatisticalAnalysis analyser){
         System.out.println("Dict size: " + analyser.dictionarySize());
     }
 
-    public static void printMostPopular(StatisticalAnalysis analyser, int percentPoint){
+    private static void printMostPopular(StatisticalAnalysis analyser, int percentPoint){
         double percentageOfOccurrance = onePercent(analyser)*percentPoint;
         long occurance = Math.round(percentageOfOccurrance);
         int numberOfOccurrance = (int) occurance;
         Set<String> mostPopoular = analyser.occurMoreThan(numberOfOccurrance);
-        System.out.printf("Most used words >%d percent :", percentPoint);
+        System.out.printf("Most used words (>%d%%) :", percentPoint);
         System.out.println(mostPopoular);
     }
 
-    public static double onePercent(StatisticalAnalysis analyser){ //double
+    private static double onePercent(StatisticalAnalysis analyser){ //double
         int hundredPerc = analyser.size();
         return hundredPerc/100.00;
-    } 
-
-    
-    public static void main(String[] args) throws FileNotFoundException {
-        Long startTime = currentTimeMillis();
-        
-        //Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        //System.out.println(timestamp);
-        FileContent test = new FileContent("test.txt");
-        Iterator<String> worditer = new WordIterator(test);
-        Iterator<String> chariter = new CharIterator(test);
-        //Map<String,Integer> sta = new StatisticalAnalysis(iter);
-        StatisticalAnalysis staW = new StatisticalAnalysis(worditer);
-        StatisticalAnalysis staCh = new StatisticalAnalysis(chariter);
-        printEntireSize(staCh);
-        printEntireSize(staW);
-        printDictSize(staW);
-        printMostPopular(staW,1); 
-        Long endTime = currentTimeMillis();
-        System.out.println("Current time: " + (endTime-startTime) + "mss.");
     }
 
-
+    
+    /* moved to StartAnalyser
+    public static void main(String[] args) throws FileNotFoundException {
+        View test = new View("test.txt");
+        test.printAllAnalysis();
+    }
+    */
 }

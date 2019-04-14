@@ -31,7 +31,6 @@ public class StatisticalAnalysis {
     public int dictionarySize(){
         return dictionary.size();
     }
-
     
     public int size(){
         /*
@@ -47,7 +46,6 @@ public class StatisticalAnalysis {
 
     public Set<String> occurMoreThan(Integer n){
         Set<String> mostOccurring = new TreeSet<>();
-        /*dictionary.forEach((k,v):(v>n) -> mostOccurring.add(k)) ;*/
         dictionary.forEach((k,v) -> { if(v>n) mostOccurring.add(k);});
         return mostOccurring;
     }
@@ -56,13 +54,6 @@ public class StatisticalAnalysis {
         return className;
     }
 
-
-   /* void addToDictionary(){
-        for(String aWord: text){
-            String aWordLowered = aWord.toLowerCase();
-            dictionary.put(aWordLowered, dictionary.getOrDefault(aWordLowered, 0)+1);
-        }
-    }*/
     public static void main(String[] args) throws FileNotFoundException {
         FileContent test = new FileContent("test.txt");
         Iterator<String> iter = new WordIterator(test);
